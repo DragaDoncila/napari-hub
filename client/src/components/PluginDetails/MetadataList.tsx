@@ -31,7 +31,7 @@ function MetadataListItem({ inline, title, values }: MetadataListItemProps) {
   const isEmpty = values.filter(Boolean).length === 0;
 
   return (
-    <li className="mb-4 text-sm">
+    <li className="mb-4 last:mb-0 text-sm">
       <h4
         className={clsx(
           // Inline styles

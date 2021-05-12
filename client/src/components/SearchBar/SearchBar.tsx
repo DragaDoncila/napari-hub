@@ -1,15 +1,14 @@
+import { IconButton, InputBase } from '@material-ui/core';
 import clsx from 'clsx';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+import { Search } from '@/components/common/icons';
 import {
   SEARCH_PAGE,
   SEARCH_QUERY_PARAM,
   useSearchState,
 } from '@/context/search';
-
-const SEARCH_ICON_SIZE = 14;
 
 /**
  * Search bar component. This renders an input field with a underline and
@@ -30,6 +29,20 @@ export function SearchBar() {
   // Local state for query. This is only used if the context state above isn't available.
   const [localQuery, setLocalQuery] = useState('');
 
+  async function redirectToSearchPage() {
+    // Search state is only available on search enabled pages.
+    const isSearchPage = results !== undefined;
+
+    // If searching from another page, redirect to the search page with the
+    // search query parameter to initiate a search on load.
+    if (!isSearchPage) {
+      const url = new URL(SEARCH_PAGE, window.location.origin);
+      url.searchParams.set(SEARCH_QUERY_PARAM, encodeURIComponent(localQuery));
+
+      await router.push(url);
+    }
+  }
+
   return (
     <form
       data-testid="searchBarForm"
@@ -42,42 +55,13 @@ export function SearchBar() {
       )}
       onSubmit={async (event) => {
         event.preventDefault();
-
-        // Search state is only available on search enabled pages.
-        const isSearchPage = results !== undefined;
-
-        // If searching from another page, redirect to the search page with the
-        // search query parameter to initiate a search on load.
-        if (!isSearchPage) {
-          const url = new URL(SEARCH_PAGE, window.location.origin);
-          url.searchParams.set(
-            SEARCH_QUERY_PARAM,
-            encodeURIComponent(localQuery),
-          );
-
-          await router.push(url);
-        }
+        await redirectToSearchPage();
       }}
     >
-      <input
+      <InputBase
+        className="flex flex-auto"
         data-testid="searchBarInput"
-        className={clsx(
-          // Flex layout
-          'flex flex-auto',
-
-          // Remove border and focus outline around input
-          'border-none outline-none',
-
-          // Remove white colored input background
-          'bg-transparent',
-
-          /*
-            Inputs have a default width defined by the browser, so we have to
-            set this explicitly to make the input flexible:
-            https://stackoverflow.com/a/42421490
-          */
-          'w-0',
-        )}
+        placeholder="Search plugins..."
         onChange={(event) => {
           const { value } = event.target;
 
@@ -89,13 +73,10 @@ export function SearchBar() {
         }}
         value={query ?? localQuery}
       />
-      <Image
-        src="/icons/search.svg"
-        alt="Icon for napari search bar"
-        layout="fixed"
-        width={SEARCH_ICON_SIZE}
-        height={SEARCH_ICON_SIZE}
-      />
+
+      <IconButton className="p-1" onClick={redirectToSearchPage}>
+        <Search />
+      </IconButton>
     </form>
   );
 }

@@ -1,7 +1,7 @@
+import { Divider } from '@material-ui/core';
 import clsx from 'clsx';
 import { ReactNode } from 'react-markdown';
 
-import { Divider } from '@/components/common';
 import { MediaFragment } from '@/components/common/media';
 import { usePluginState } from '@/context/plugin';
 import { formatDate } from '@/utils/date';
@@ -165,7 +165,7 @@ function PluginMetadataBase({
  * inline for smaller screens.
  */
 export function PluginMetadata(props: CommonProps) {
-  let divider = <Divider className="my-6" />;
+  let divider = <Divider className="my-6 bg-black" />;
   divider = (
     <>
       <MediaFragment greaterThanOrEqual="3xl">{divider}</MediaFragment>

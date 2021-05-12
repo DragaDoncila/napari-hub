@@ -1,6 +1,7 @@
 const { reduce } = require('lodash');
 const typography = require('@tailwindcss/typography');
 
+const colors = require('./colors');
 const breakpoints = require('./breakpoints');
 
 // Add px unit to all breakpoint values.
@@ -21,9 +22,13 @@ module.exports = {
   theme: {
     screens,
     extend: {
+      fontFamily: {
+        barlow: ['Barlow'],
+      },
+
       colors: {
-        'napari-primary': '#80d1ff',
-        'napari-primary-light': 'rgba(128, 215, 255, 0.25)',
+        'napari-primary': colors.primary,
+        'napari-primary-light': colors.primaryLight,
       },
 
       width: (theme) => ({

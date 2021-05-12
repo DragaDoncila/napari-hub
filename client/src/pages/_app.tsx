@@ -8,15 +8,17 @@ import '@/axios';
 import '@/tailwind.scss';
 import '@/global.scss';
 
+import { StylesProvider, ThemeProvider } from '@material-ui/core/styles';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import { ReactNode, useRef } from 'react';
+import { ReactNode, useEffect, useRef } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 
 import { Layout } from '@/components';
 import { MediaContextProvider } from '@/components/common/media';
+import { theme } from '@/theme';
 
 interface GetLayoutComponent {
   getLayout?(page: ReactNode): ReactNode;
@@ -50,14 +52,33 @@ export default function App({ Component, pageProps }: AppProps) {
   let page: ReactNode = <Component {...pageProps} />;
   page = getLayout?.(page) ?? <Layout>{page}</Layout>;
 
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side');
+    jssStyles?.parentElement?.removeChild?.(jssStyles);
+  }, []);
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap"
+          media="print"
+          onLoad={(el) => {
+            el.currentTarget.removeAttribute('media');
+          }}
+          rel="stylesheet"
+        />
       </Head>
 
       <ReactQueryProvider dehydratedState={pageProps.dehydratedState}>
-        <MediaContextProvider>{page}</MediaContextProvider>
+        <MediaContextProvider>
+          <ThemeProvider theme={theme}>
+            <StylesProvider injectFirst>{page}</StylesProvider>
+          </ThemeProvider>
+        </MediaContextProvider>
       </ReactQueryProvider>
     </>
   );

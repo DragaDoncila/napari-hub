@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import clsx from 'clsx';
 import { useState } from 'react';
 
@@ -18,24 +19,26 @@ export function CallToActionButton({ className }: Props) {
     <>
       <InstallModal onClose={() => setVisible(false)} visible={visible} />
 
-      <button
+      <Button
         className={clsx(
           className,
-
-          // Button color
-          'bg-napari-primary',
 
           // Keep button on screen when scrolling on 2xl.
           '2xl:fixed',
 
           // Dimensions
           'h-12 w-full lg:max-w-napari-side-col',
+
+          // Font
+          'font-bold',
         )}
+        disableElevation
         onClick={() => setVisible(true)}
-        type="button"
+        variant="contained"
+        color="primary"
       >
         Install
-      </button>
+      </Button>
     </>
   );
 }

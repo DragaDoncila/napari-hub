@@ -14,6 +14,8 @@ module.exports = withMDX({
   },
 
   webpack(config, { isServer }) {
+    process.env.BABEL_ENV = config.name;
+
     if (!isServer) {
       config.resolve.alias.lodash = require.resolve('lodash-es');
     }

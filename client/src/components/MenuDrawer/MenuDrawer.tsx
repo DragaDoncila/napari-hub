@@ -1,91 +1,52 @@
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import { useRef } from 'react';
-import { useClickAway } from 'react-use';
+import { IconButton, List, ListItem, SwipeableDrawer } from '@material-ui/core';
 
-import { Link, Overlay } from '@/components/common';
+import { Link } from '@/components/common';
 import { Close } from '@/components/common/icons';
 
-import styles from './MenuDrawer.module.scss';
 import { MenuDrawerItem } from './types';
 
 interface Props {
   items: MenuDrawerItem[];
-  onMenuClose: () => void;
+  onClose: () => void;
+  onOpen: () => void;
   visible: boolean;
 }
 
 /**
- * Navigation drawer that slides out from the right. An overlay is rendered
- * below the menu to emphasize the drawer being in view.
- *
- * The drawer closes automatically if the user clicks outside of the drawer.
- * This is handled using the `useClickAway()` hook:
- * https://git.io/JOmWl
+ * Navigation drawer that slides out from the right. The drawer can be opened by
+ * pressing the menu button or by swiping left from the right side of the
+ * screen. Conversely, the drawer can be closed by clickig the close button,
+ * swiping the drawer right, or clicking outside of the drawer area.
  */
-export function MenuDrawer({ items, onMenuClose, visible }: Props) {
-  const menuRef = useRef<HTMLDivElement | null>(null);
-  useClickAway(menuRef, onMenuClose);
+export function MenuDrawer({ items, onOpen, onClose, visible }: Props) {
+  const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   return (
-    <>
-      <Overlay visible={visible} />
+    <SwipeableDrawer
+      anchor="right"
+      classes={{ paper: 'bg-black flex-row w-9/12 p-6' }}
+      disableDiscovery={iOS}
+      onClose={onClose}
+      onOpen={onOpen}
+      open={visible}
+    >
+      <List className="text-white flex-grow">
+        {items.map((item) => (
+          <ListItem key={item.title}>
+            <Link href={item.link} onClick={onClose}>
+              {item.title}
+            </Link>
+          </ListItem>
+        ))}
+      </List>
 
-      <motion.div
-        data-testid="menu"
-        animate={visible ? 'visible' : 'hidden'}
-        initial="hidden"
-        variants={{
-          hidden: { x: '100%' },
-          visible: { x: 0 },
-        }}
-        transition={{ type: 'tween', duration: 0.3, ease: 'easeInOut' }}
-        className={clsx(
-          // Fixed positioning to keep entire menu in viewport
-          'fixed top-0 right-0',
-
-          // Layout
-          'flex flex-row items-start',
-
-          // High z-index so that drawer overlays everything on the website
-          'z-40',
-
-          // Dimensions
-          'w-9/12 h-screen',
-
-          // Padding
-          'p-6',
-
-          // Color
-          'bg-black',
-        )}
-        ref={menuRef}
+      <IconButton
+        className="self-start"
+        data-testid="drawerClose"
+        onClick={onClose}
       >
-        {/* Menu links */}
-        <ul className="flex flex-auto flex-col">
-          {items.map((item) => (
-            <li
-              className={clsx('text-white', styles.item)}
-              data-testid="drawerItem"
-              key={item.title}
-            >
-              <Link href={item.link} onClick={onMenuClose}>
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Close button */}
-        <button
-          className="flex"
-          data-testid="drawerClose"
-          onClick={onMenuClose}
-          type="button"
-        >
-          <Close />
-        </button>
-      </motion.div>
-    </>
+        <Close />
+      </IconButton>
+    </SwipeableDrawer>
   );
 }
