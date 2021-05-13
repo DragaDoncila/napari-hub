@@ -8,7 +8,9 @@ import axios from 'axios';
 /**
  * URL to hub API to make requests to.
  */
-const API_URL = process.env.API_URL || 'http://localhost:8081';
+const API_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}/api`
+  : process.env.API_URL || 'http://localhost:8081';
 
 /**
  * Host to use for Host header when making requests. Setting this is required
