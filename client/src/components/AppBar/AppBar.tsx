@@ -32,7 +32,7 @@ export function AppBar() {
           'justify-center items-center',
 
           // Padding
-          'px-6 md:px-12 2xl:p-0',
+          'px-6 phone-md:px-12 2tablet-lg:p-0',
 
           // Grid layout for smaller screens. This allows the search bar to
           // extend to its max width to the left. The `zero:` modifier is used
@@ -61,7 +61,7 @@ export function AppBar() {
             'justify-self-end',
 
             // Use more columns on larger screens
-            'xl:col-span-2 2xl:col-span-3',
+            'tablet-lg:col-span-2 2tablet-lg:col-span-3',
           )}
         >
           <SearchBar />
@@ -69,7 +69,7 @@ export function AppBar() {
           {/* Menu button */}
           <button
             // Show menu button on smaller layouts
-            className="ml-6 flex lg:hidden"
+            className="ml-6 flex tablet-xs:hidden"
             onClick={() => setVisible(true)}
             type="button"
           >

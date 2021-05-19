@@ -20,7 +20,7 @@ function PluginCenterColumn() {
   const { plugin } = usePluginState();
 
   return (
-    <article className="w-full col-span-2 xl:col-span-3">
+    <article className="w-full col-span-2 tablet-lg:col-span-3">
       <h1 className="font-bold text-4xl">{plugin.name}</h1>
       <h2 className="font-semibold my-6 text-lg">{plugin.summary}</h2>
 
@@ -30,10 +30,10 @@ function PluginCenterColumn() {
           'flex flex-col',
 
           // Align CTA and metadata link horizontally for lg layouts
-          'lg:flex-row lg:items-center',
+          'tablet-xs:flex-row tablet-xs:items-center',
 
           // Margins
-          'my-6 md:my-12',
+          'my-6 phone-md:my-12',
         )}
         lessThan="3xl"
       >
@@ -50,14 +50,14 @@ function PluginCenterColumn() {
               Top margins: This is used for smaller layouts because the CTA
               button is above the metadata link.
             */
-            'mt-6 md:mt-12 lg:mt-0',
+            'mt-6 phone-md:mt-12 tablet-xs:mt-0',
 
             /*
               Left margins: This is used when the CTA and metadata link are
               inline.  The margin is removed when the CTA moves to the right
               column on 2xl layouts.
             */
-            'lg:ml-12 2xl:ml-0',
+            'tablet-xs:ml-12 2tablet-lg:ml-0',
           )}
           href="#pluginMetadata"
         >
@@ -65,13 +65,13 @@ function PluginCenterColumn() {
         </a>
       </Media>
 
-      <SupportInfo className="mb-6 md:mb-12" />
+      <SupportInfo className="mb-6 phone-md:mb-12" />
 
       <Markdown className="mb-10" disableHeader>
         {plugin.description}
       </Markdown>
 
-      <CallToActionButton className="mb-6 md:mb-12 2xl:mb-20" />
+      <CallToActionButton className="mb-6 phone-md:mb-12 2tablet-lg:mb-20" />
 
       <MediaFragment lessThan="3xl">
         <PluginMetadata />
@@ -101,7 +101,10 @@ function PluginRightColumn() {
  */
 export function PluginDetails() {
   return (
-    <ColumnLayout className="p-6 md:p-12 2xl:px-0" data-testid="pluginDetails">
+    <ColumnLayout
+      className="p-6 phone-md:p-12 2tablet-lg:px-0"
+      data-testid="pluginDetails"
+    >
       <PluginLeftColumn />
       <PluginCenterColumn />
       <PluginRightColumn />

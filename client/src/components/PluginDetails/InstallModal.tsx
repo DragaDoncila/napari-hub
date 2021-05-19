@@ -155,7 +155,7 @@ export function InstallModal({ onClose, visible }: InstallModalProps) {
             'fixed z-50',
 
             // Padding
-            'p-6 md:p-12',
+            'p-6 phone-md:p-12',
 
             // Dimensions
             'w-5/6 max-w-[775px] max-h-[706px]',

@@ -41,10 +41,10 @@ export function AppBarLanding() {
 
   return (
     <ColumnLayout
-      className="bg-napari-primary p-6 screen-495:p-12"
+      className="bg-napari-primary p-6 phone-md:p-12"
       classes={{
         // Use 3-column layout instead of 4-column.
-        fourColumn: 'screen-1150:grid-cols-napari-3',
+        fourColumn: 'desktop-xs:grid-cols-napari-3',
       }}
       component="header"
     >
@@ -76,7 +76,7 @@ export function AppBarLanding() {
         )}
       />
 
-      <List className="ml-6 screen-875:col-span-2">
+      <List className="ml-6 tablet-lg:col-span-2">
         <li>Discover plugins that solve your image analysis challenges</li>
         <li>Install into napari straight from your browser</li>
 

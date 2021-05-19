@@ -32,10 +32,10 @@ interface Props<T extends HTMLKey> extends HTMLProps<ReactHTML[T]> {
 }
 
 const defaultClasses: NonPartial<Classes> = {
-  gap: 'gap-6 md:gap-12',
+  gap: 'gap-6 phone-md:gap-12',
   twoColumn: 'grid-cols-2',
-  threeColumn: 'screen-875:grid-cols-napari-3',
-  fourColumn: 'screen-1150:grid-cols-napari-4',
+  threeColumn: 'tablet-lg:grid-cols-napari-3',
+  fourColumn: 'desktop-xs:grid-cols-napari-4',
   fiveColumn: 'screen-1425:grid-cols-napari-5',
 };
 

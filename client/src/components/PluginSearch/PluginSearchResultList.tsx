@@ -13,7 +13,7 @@ export function PluginSearchResultList() {
         className={clsx(
           'col-span-2',
           'font-bold text-2xl mb-6',
-          'screen-875:col-start-2',
+          'tablet-lg:col-start-2',
         )}
       >
         Browse plugins
@@ -23,7 +23,7 @@ export function PluginSearchResultList() {
         <PluginSearchResult
           className={clsx(
             'col-span-2',
-            'screen-875:col-start-2 screen-875:col-span-2',
+            'tablet-lg:col-start-2 tablet-lg:col-span-2',
             'screen-1425:col-start-2 screen-1425:col-span-3',
           )}
           key={plugin.name}

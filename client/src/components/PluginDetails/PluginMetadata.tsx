@@ -42,7 +42,7 @@ function PluginGithubData() {
         'flex flex-col',
 
         // Centering only for xl layout
-        'items-start xl:items-center 2xl:items-start',
+        'items-start tablet-lg:items-center 2tablet-lg:items-start',
 
         // Font
         'text-sm',
@@ -145,10 +145,10 @@ function PluginMetadataBase({
         'grid',
 
         // Horizontal layout with 3-column grid for xl+
-        'xl:grid-cols-3',
+        'tablet-lg:grid-cols-3',
 
         // Back to 1-column vertical layout for 3xl+
-        '3xl:grid-cols-1',
+        '3tablet-lg:grid-cols-1',
       )}
     >
       <MetadataList inline={inline} items={projectItems} />

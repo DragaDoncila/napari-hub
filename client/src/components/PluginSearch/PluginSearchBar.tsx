@@ -22,13 +22,13 @@ export function PluginSearchBar() {
   return (
     <ColumnLayout
       id={PLUGIN_SEARCH_ID}
-      className="bg-napari-light h-36 items-center px-6 md:px-12"
+      className="bg-napari-light h-36 items-center px-6 phone-md:px-12"
       classes={{
         // Use 3-column layout instead of 4-column.
-        fourColumn: 'screen-1150:grid-cols-napari-3',
+        fourColumn: 'desktop-xs:grid-cols-napari-3',
       }}
     >
-      <div className="col-span-2 screen-875:col-span-3 screen-1425:col-start-2">
+      <div className="col-span-2 tablet-lg:col-span-3 screen-1425:col-start-2">
         <h2 className="font-bold text-xl mb-4 whitespace-nowrap">
           Search for a plugin by keyword or author
         </h2>
