@@ -9,7 +9,7 @@ module.exports = {
   'phone-xs': 300,
   'phone-sm': 375,
   'phone-md': 400,
-  'phone-lg': 495,
+  'phone-lg': 400,
   'phone-xl': 550,
   'phone-2xl': 560,
   'tablet-xs': 600,
