@@ -32,7 +32,7 @@ export function AppBar() {
           'justify-center items-center',
 
           // Padding
-          'px-6 screen-495:px-12 screen-875:p-0',
+          'px-6 screen-400:px-12 screen-875:p-0',
 
           // Grid layout for smaller screens. This allows the search bar to
           // extend to its max width to the left. The `zero:` modifier is used

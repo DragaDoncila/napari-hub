@@ -8,6 +8,7 @@ module.exports = {
   zero: 0,
   'screen-300': 300,
   'screen-375': 375,
+  'screen-400': 400,
   'screen-495': 495,
   'screen-500': 550,
   'screen-560': 560,
