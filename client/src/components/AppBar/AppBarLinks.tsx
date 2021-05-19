@@ -44,7 +44,7 @@ export function AppBarLinks({ className, items, vertical }: Props) {
 
   return (
     <nav className={clsx(className, 'flex', vertical && 'flex-col')}>
-      <h1 className="whitespace-nowrap">
+      <h1 data-testid="appBarHome" className="whitespace-nowrap">
         <Link
           // Redirect to home page
           href="/"
