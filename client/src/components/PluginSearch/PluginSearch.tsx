@@ -15,7 +15,7 @@ export function PluginSearch() {
       <PluginSearchBar />
 
       <ColumnLayout
-        className="p-6 phone-md:p-12"
+        className="p-6 phone-lg:p-12"
         classes={{
           gap: 'gap-x-6 gap-x-12',
           // Use 3-column layout instead of 4-column layout.

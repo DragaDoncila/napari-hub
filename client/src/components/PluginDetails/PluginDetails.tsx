@@ -33,7 +33,7 @@ function PluginCenterColumn() {
           'tablet-xs:flex-row tablet-xs:items-center',
 
           // Margins
-          'my-6 phone-md:my-12',
+          'my-6 phone-lg:my-12',
         )}
         lessThan="3xl"
       >
@@ -50,7 +50,7 @@ function PluginCenterColumn() {
               Top margins: This is used for smaller layouts because the CTA
               button is above the metadata link.
             */
-            'mt-6 phone-md:mt-12 tablet-xs:mt-0',
+            'mt-6 phone-lg:mt-12 tablet-xs:mt-0',
 
             /*
               Left margins: This is used when the CTA and metadata link are
@@ -65,13 +65,13 @@ function PluginCenterColumn() {
         </a>
       </Media>
 
-      <SupportInfo className="mb-6 phone-md:mb-12" />
+      <SupportInfo className="mb-6 phone-lg:mb-12" />
 
       <Markdown className="mb-10" disableHeader>
         {plugin.description}
       </Markdown>
 
-      <CallToActionButton className="mb-6 phone-md:mb-12 2tablet-lg:mb-20" />
+      <CallToActionButton className="mb-6 phone-lg:mb-12 2tablet-lg:mb-20" />
 
       <MediaFragment lessThan="3xl">
         <PluginMetadata />
@@ -102,7 +102,7 @@ function PluginRightColumn() {
 export function PluginDetails() {
   return (
     <ColumnLayout
-      className="p-6 phone-md:p-12 2tablet-lg:px-0"
+      className="p-6 phone-lg:p-12 2tablet-lg:px-0"
       data-testid="pluginDetails"
     >
       <PluginLeftColumn />

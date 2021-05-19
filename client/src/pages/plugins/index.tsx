@@ -36,7 +36,7 @@ export default function PluginListPage({ plugins = {}, error }: Props) {
       {error ? (
         <ErrorMessage error={error}>Unable to load plugins</ErrorMessage>
       ) : (
-        <div className="flex flex-col p-6 phone-md:p-12">
+        <div className="flex flex-col p-6 phone-lg:p-12">
           {Object.entries(plugins).map(([name, version]) => {
             const label = `${name}@${version}`;
             const url = `/plugins/${name}`;

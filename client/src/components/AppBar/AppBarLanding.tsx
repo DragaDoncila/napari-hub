@@ -41,7 +41,7 @@ export function AppBarLanding() {
 
   return (
     <ColumnLayout
-      className="bg-napari-primary p-6 phone-md:p-12"
+      className="bg-napari-primary p-6 phone-lg:p-12"
       classes={{
         // Use 3-column layout instead of 4-column.
         fourColumn: 'desktop-xs:grid-cols-napari-3',
