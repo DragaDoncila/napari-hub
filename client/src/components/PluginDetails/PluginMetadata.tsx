@@ -42,7 +42,7 @@ function PluginGithubData() {
         'flex flex-col',
 
         // Centering only for xl layout
-        'items-start xl:items-center 2xl:items-start',
+        'items-start screen-875:items-center screen-875:items-start',
 
         // Font
         'text-sm',
@@ -145,10 +145,10 @@ function PluginMetadataBase({
         'grid',
 
         // Horizontal layout with 3-column grid for xl+
-        'xl:grid-cols-3',
+        'screen-875:grid-cols-3',
 
-        // Back to 1-column vertical layout for 3xl+
-        '3xl:grid-cols-1',
+        // Back to 1-column vertical layout for screen-1425:+
+        '3screen-875:grid-cols-1',
       )}
     >
       <MetadataList inline={inline} items={projectItems} />
@@ -169,18 +169,18 @@ export function PluginMetadata(props: CommonProps) {
   let divider = <Divider className="my-6" />;
   divider = (
     <>
-      <MediaFragment greaterThanOrEqual="3xl">{divider}</MediaFragment>
+      <MediaFragment greaterThanOrEqual="screen-1425:">{divider}</MediaFragment>
       <MediaFragment lessThan="xl">{divider}</MediaFragment>
     </>
   );
 
   return (
     <>
-      <MediaFragment lessThan="3xl">
+      <MediaFragment lessThan="screen-1425:">
         <PluginMetadataBase {...props} divider={divider} inline />
       </MediaFragment>
 
-      <MediaFragment greaterThanOrEqual="3xl">
+      <MediaFragment greaterThanOrEqual="screen-1425:">
         <PluginMetadataBase {...props} divider={divider} />
       </MediaFragment>
     </>

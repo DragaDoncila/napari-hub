@@ -58,7 +58,9 @@ function InstallModalBody({ onClose }: Closeable) {
     <>
       {/* Header showing title and close button */}
       <header className="flex justify-between mb-9">
-        <h2 className="font-bold text-2xl">Installing a plugin with napari</h2>
+        <h2 className="font-bold text-screen-1150:">
+          Installing a plugin with napari
+        </h2>
 
         {/* Close button */}
         <MediaFragment greaterThanOrEqual="sm">
@@ -146,7 +148,7 @@ export function InstallModal({ onClose, visible }: InstallModalProps) {
         <Fade
           className={clsx(
             // White background and drop shadow
-            'bg-white shadow-2xl',
+            'bg-white shadow-screen-1150:',
 
             // Add scrollbar if modal contents are too long.
             'overflow-y-auto',
@@ -155,7 +157,7 @@ export function InstallModal({ onClose, visible }: InstallModalProps) {
             'fixed z-50',
 
             // Padding
-            'p-6 md:p-12',
+            'p-6 screen-495:p-12',
 
             // Dimensions
             'w-5/6 max-w-[775px] max-h-[706px]',

@@ -12,7 +12,7 @@ export function PluginSearchResultList() {
       <h2
         className={clsx(
           'col-span-2',
-          'font-bold text-2xl mb-6',
+          'font-bold text-screen-1150: mb-6',
           'screen-875:col-start-2',
         )}
       >

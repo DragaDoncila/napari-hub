@@ -10,7 +10,7 @@ import { SupportInfo } from './SupportInfo';
 
 function PluginLeftColumn() {
   return (
-    <Media greaterThanOrEqual="3xl">
+    <Media greaterThanOrEqual="screen-1425:">
       <PluginMetadata />
     </Media>
   );
@@ -20,7 +20,7 @@ function PluginCenterColumn() {
   const { plugin } = usePluginState();
 
   return (
-    <article className="w-full col-span-2 xl:col-span-3">
+    <article className="w-full col-span-2 screen-875:col-span-3">
       <h1 className="font-bold text-4xl">{plugin.name}</h1>
       <h2 className="font-semibold my-6 text-lg">{plugin.summary}</h2>
 
@@ -33,11 +33,11 @@ function PluginCenterColumn() {
           'lg:flex-row lg:items-center',
 
           // Margins
-          'my-6 md:my-12',
+          'my-6 screen-495:my-12',
         )}
-        lessThan="3xl"
+        lessThan="screen-1425:"
       >
-        <MediaFragment lessThan="2xl">
+        <MediaFragment lessThan="screen-1150:">
           <CallToActionButton />
         </MediaFragment>
 
@@ -50,14 +50,14 @@ function PluginCenterColumn() {
               Top margins: This is used for smaller layouts because the CTA
               button is above the metadata link.
             */
-            'mt-6 md:mt-12 lg:mt-0',
+            'mt-6 screen-495:mt-12 lg:mt-0',
 
             /*
               Left margins: This is used when the CTA and metadata link are
               inline.  The margin is removed when the CTA moves to the right
-              column on 2xl layouts.
+              column on screen-1150: layouts.
             */
-            'lg:ml-12 2xl:ml-0',
+            'lg:ml-12 screen-875:ml-0',
           )}
           href="#pluginMetadata"
         >
@@ -65,15 +65,15 @@ function PluginCenterColumn() {
         </a>
       </Media>
 
-      <SupportInfo className="mb-6 md:mb-12" />
+      <SupportInfo className="mb-6 screen-495:mb-12" />
 
       <Markdown className="mb-10" disableHeader>
         {plugin.description}
       </Markdown>
 
-      <CallToActionButton className="mb-6 md:mb-12 2xl:mb-20" />
+      <CallToActionButton className="mb-6 screen-495:mb-12 screen-875:mb-20" />
 
-      <MediaFragment lessThan="3xl">
+      <MediaFragment lessThan="screen-1425:">
         <PluginMetadata />
       </MediaFragment>
     </article>
@@ -84,8 +84,8 @@ function PluginRightColumn() {
   const { plugin } = usePluginState();
 
   return (
-    <Media greaterThanOrEqual="2xl">
-      {/*  Keep button on screen when scrolling on 2xl. */}
+    <Media greaterThanOrEqual="screen-1150:">
+      {/*  Keep button on screen when scrolling on screen-1150:. */}
       <CallToActionButton className="fixed" />
 
       <Markdown.TOC
@@ -101,7 +101,10 @@ function PluginRightColumn() {
  */
 export function PluginDetails() {
   return (
-    <ColumnLayout className="p-6 md:p-12 2xl:px-0" data-testid="pluginDetails">
+    <ColumnLayout
+      className="p-6 screen-495:p-12 screen-875:px-0"
+      data-testid="pluginDetails"
+    >
       <PluginLeftColumn />
       <PluginCenterColumn />
       <PluginRightColumn />
