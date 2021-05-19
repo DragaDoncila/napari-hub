@@ -10,9 +10,9 @@ interface Props {
  */
 export function ErrorMessage({ children, error }: Props) {
   return (
-    <div className="flex flex-auto flex-col items-center justify-center mt-6 screen-495:mt-12">
+    <div className="flex flex-auto flex-col items-center justify-center mt-6 screen-400:mt-12">
       <h1 className="font-bold text-4xl">Error: {children}</h1>
-      <pre className="mt-6 screen-495:mt-12">{error}</pre>
+      <pre className="mt-6 screen-400:mt-12">{error}</pre>
     </div>
   );
 }

@@ -157,7 +157,7 @@ export function InstallModal({ onClose, visible }: InstallModalProps) {
             'fixed z-50',
 
             // Padding
-            'p-6 screen-495:p-12',
+            'p-6 screen-400:p-12',
 
             // Dimensions
             'w-5/6 max-w-[775px] max-h-[706px]',
